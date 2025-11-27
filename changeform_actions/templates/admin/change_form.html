@@ -2,6 +2,7 @@
 {% load changeform_actions %}
 {% block object-tools-items %}
     {{ block.super }}
-    {% get_changeform_actions_dropdown adminform.model_admin as select %}
-    {{ select|safe }}
+
+    {% get_changeform_actions_dropdown adminform.model_admin as select_html %}
+    {{ select_html|safe }}
 {% endblock %}

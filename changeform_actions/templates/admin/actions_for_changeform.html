@@ -1,0 +1,51 @@
+{% load i18n %}
+
+<li style="margin-left: 15px;">
+  <form
+    id="changeform_actions"
+    action="{{ action_form_url }}"
+    method="post"
+  >
+    {% csrf_token %}
+
+    <input type="hidden" name="app_label" value="{{ app_label }}">
+    <input type="hidden" name="model_name" value="{{ model_name }}">
+    <input type="hidden" name="pk" value="{{ object_id }}">
+
+    <div class="actions">
+      <label>{{ action_form.action.label }} {{ action_form.action}}</label>
+      <button type="submit" class="button" name="index" value="{{ action_index|default:0 }}">{% translate "Run" %}</button>
+    </div>
+
+  </form>
+</li>
+
+<style>
+/* Based on: #changelist .actions ... */
+
+#changeform_actions .actions select {
+    vertical-align: top;
+    height: 1.5rem;
+    color: var(--body-fg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    padding: 0 0 0 4px;
+    margin: 0;
+    margin-left: 10px;
+}
+
+#changeform_actions .actions .button {
+    font-size: 0.8125rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--body-bg);
+    box-shadow: 0 -15px 20px -10px rgba(0, 0, 0, 0.15) inset;
+    cursor: pointer;
+    height: 1.5rem;
+    line-height: 1;
+    padding: 4px 8px;
+    margin: 0;
+    color: var(--body-fg);
+}
+</style>
