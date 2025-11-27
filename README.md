@@ -43,3 +43,9 @@ class MyModelAdmin(ChangeFormActionsMixin, admin.ModelAdmin):
     actions = [...]
 ```
 
+## Tests
+
+```bash
+uv sync
+uv run pytest .
+```
