@@ -3,6 +3,13 @@ name = "django-admin-changeform-actions"
 version = "0.1.0"
 description = "Reuse model admin changelist actions on changeform pages"
 readme = "README.md"
+requires-python = ">=3.7"
 dependencies = [
-    "django",
+    "django>=3.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-django",
 ]
