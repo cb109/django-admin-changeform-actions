@@ -52,7 +52,7 @@ class ChangeFormActionsMixin:
         instead of just including the provided urls.py.
 
         """
-        return reverse("run_admin_changeform_action")
+        return reverse("changeform_actions:run_admin_changeform_action")
 
     def get_changeform_actions_dropdown(self, request, context) -> str:
         """Return HTML to run custom admin actions on the current object."""

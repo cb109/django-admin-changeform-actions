@@ -2,6 +2,9 @@ from django.urls import path
 
 from . import views
 
+# Register namespace for all URLs in this app
+app_name = "changeform_actions"
+
 urlpatterns = [
     path(
         "django-admin-changeform-actions/run",
