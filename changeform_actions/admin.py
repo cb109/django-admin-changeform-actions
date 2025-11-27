@@ -45,7 +45,13 @@ class ChangeFormActionsMixin:
     skip_default_delete_action: bool = True
 
     def get_form_action_url(self) -> str:
-        """Override this to customize the form action URL."""
+        """Override this to customize the form action URL.
+
+        Please be aware you will then have to manually register the
+        corresponding run_action_for_model_instance() view to that URL,
+        instead of just including the provided urls.py.
+
+        """
         return reverse("run_admin_changeform_action")
 
     def get_changeform_actions_dropdown(self, request, context) -> str:
