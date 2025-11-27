@@ -6,7 +6,6 @@ from django.urls import reverse
 
 from .forms import ActionForm
 
-RUN_ACTION_URL: str = "run_admin_changeform_action"
 DEFAULT_DELETE_ACTION_NAME: str = "delete_selected"
 
 
@@ -43,8 +42,11 @@ class ChangeFormActionsMixin:
 
     """
 
+    skip_default_delete_action: bool = True
+
     def get_form_action_url(self) -> str:
-        return reverse(RUN_ACTION_URL)
+        """Override this to customize the form action URL."""
+        return reverse("run_admin_changeform_action")
 
     def get_changeform_actions_dropdown(self, request, context) -> str:
         """Return HTML to run custom admin actions on the current object."""
@@ -54,11 +56,11 @@ class ChangeFormActionsMixin:
         model_name: str = opts.model_name
 
         object_id: Optional[int] = None
-        for thing in context:
-            if not isinstance(thing, ContextDict):
+        for item in context:
+            if not isinstance(item, ContextDict):
                 continue
-            if "object_id" in thing:
-                object_id = thing["object_id"]
+            if "object_id" in item:
+                object_id = item["object_id"]
                 break
         if not object_id:
             return ""
@@ -67,7 +69,7 @@ class ChangeFormActionsMixin:
         action_form.fields["action"].choices = [
             (name, label)
             for (name, label) in self.get_action_choices(request)
-            if name != DEFAULT_DELETE_ACTION_NAME
+            if self.skip_default_delete_action and name != DEFAULT_DELETE_ACTION_NAME
         ]
 
         return render_to_string(
