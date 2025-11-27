@@ -43,9 +43,21 @@ class MyModelAdmin(ChangeFormActionsMixin, admin.ModelAdmin):
     actions = [...]
 ```
 
-## Tests
+## Development Setup
+
+This project uses [uv](https://docs.astral.sh/uv/) to handle python versions and dependencies.
 
 ```bash
 uv sync
-uv run pytest .
+```
+
+## Tests
+
+```bash
+uv run pytest
+```
+
+Run test matrix of different python versions VS different django versions:
+```bash
+uv run tox
 ```
