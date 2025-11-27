@@ -1,10 +1,13 @@
 from django.apps import apps
 from django.contrib import admin
+from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import QuerySet
 from django.http import HttpResponseRedirect
+from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_http_methods
 
 
+@staff_member_required
 @require_http_methods(("POST",))
 def run_action_for_model_instance(request):
     """Run specified custom admin action on a model instance.
@@ -35,14 +38,11 @@ def run_action_for_model_instance(request):
 
     model_cls: type = apps.get_model(app_label, model_name)
     queryset: QuerySet = model_cls.objects.filter(pk=pk)
-    instance: object = model_cls.objects.get(pk=pk)
 
     model_admin: object = admin.site._registry[model_cls]
     for action, name, label in model_admin._get_base_actions():
         if name == action_name:
             action(model_admin, request, queryset)
-            model_admin.message_user(
-                request, f"Aktion '{label}' ausgeführt für: '{instance}'"
-            )
+            model_admin.message_user(request, _("Action:") + f" {label}")
 
     return HttpResponseRedirect(referer_url)
