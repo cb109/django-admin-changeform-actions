@@ -32,7 +32,7 @@ class TestIntegration:
         instance = MyModel.objects.create(name="Test")
 
         # Get changeform page and check that the dropdown is present
-        url = f"/admin/tests/mymodel/{instance.pk}/change/"
-        response = client.get(url)
+        changeform_url = reverse("admin:tests_mymodel_change", args=[instance.pk])
+        response = client.get(changeform_url)
         assert response.status_code == 200
         assert b'<select name="action"' in response.content
