@@ -22,7 +22,7 @@ def run_action_for_model_instance(request):
 
     For the corresponding ModelAdmin code, see:
 
-        admin.common.ChangeFormActionsMixin
+        admin.ChangeFormActionsMixin
 
     """
     referer_url: str = request.META["HTTP_REFERER"]
