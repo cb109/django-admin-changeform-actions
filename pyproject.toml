@@ -1,0 +1,8 @@
+[project]
+name = "django-admin-changeform-actions"
+version = "0.1.0"
+description = "Reuse model admin changelist actions on changeform pages"
+readme = "README.md"
+dependencies = [
+    "django",
+]
