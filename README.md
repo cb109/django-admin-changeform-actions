@@ -1,11 +1,12 @@
 # django-admin-changeform-actions
 
-Django's
-[ModelAdmin.actions](https://docs.djangoproject.com/en/dev/ref/contrib/admin/actions/)
-are available only on a model's `changelist` page by default. This
-package makes them available on the model's `changeform` page as well.
+Replicates the admin
+[actions](https://docs.djangoproject.com/en/dev/ref/contrib/admin/actions/)
+dropdown (available on a model's `changelist` page) on each model
+instance's `changeform` page.
 
-This allows to reuse custom admin actions on a specific model instance quickly.
+Instead of targetting a selection the action will target the current
+model instance only.
 
 ## Installation
 
