@@ -3,7 +3,7 @@ name = "django-admin-changeform-actions"
 authors = [
   { name="Christoph Buelter", email="buelter.christoph@gmail.com" },
 ]
-version = "0.5.0"
+version = "0.5.1"
 license = "MIT"
 description = "Reuse model admin changelist actions on changeform pages"
 readme = "README.md"
