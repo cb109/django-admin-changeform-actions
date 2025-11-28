@@ -15,8 +15,7 @@ model instance only.
 Install the package:
 
 ```bash
-cd django-admin-changeform-actions/
-pip install -e .
+pip install django-admin-changeform-actions
 ```
 
 Modify your Django project like:
