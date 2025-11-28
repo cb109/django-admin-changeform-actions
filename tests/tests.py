@@ -71,6 +71,7 @@ class TestRunAction:
         instance = MyModel.objects.create(name="Test")
 
         # Test: Run action renames the model instance
+        changeform_url: str = reverse("admin:tests_mymodel_change", args=[instance.pk])
         run_action_url: str = reverse("changeform_actions:run_admin_changeform_action")
         response = client.post(
             run_action_url,
@@ -80,10 +81,11 @@ class TestRunAction:
                 "pk": str(instance.pk),
                 "action": "add_copy_suffix",
             },
-            HTTP_REFERER=reverse("admin:tests_mymodel_change", args=[instance.pk]),
+            HTTP_REFERER=changeform_url,
             follow=True,
         )
         assert response.status_code == 200
+        assert response.request["PATH_INFO"] == changeform_url
 
         instance.refresh_from_db()
         assert instance.name == "Test - copy"
