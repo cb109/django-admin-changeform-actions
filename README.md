@@ -1,5 +1,8 @@
 # django-admin-changeform-actions
 
+[![Run pytest](https://github.com/cb109/django-admin-changeform-actions/actions/workflows/pytest.yml/badge.svg)](https://github.com/cb109/django-admin-changeform-actions/actions/workflows/pytest.yml)
+[![Run tox](https://github.com/cb109/django-admin-changeform-actions/actions/workflows/tox.yml/badge.svg)](https://github.com/cb109/django-admin-changeform-actions/actions/workflows/tox.yml)
+
 Replicates the admin
 [actions](https://docs.djangoproject.com/en/dev/ref/contrib/admin/actions/)
 dropdown (available on a model's `changelist` page) on each model
