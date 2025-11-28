@@ -5,7 +5,7 @@ Replicates the admin
 dropdown (available on a model's `changelist` page) on each model
 instance's `changeform` page.
 
-<img src="docs/changeform_actions_ui.png" width="800">
+<img src="https://github.com/cb109/django-admin-changeform-actions/blob/main/docs/changeform_actions_ui.png" width="800">
 
 Instead of targetting a selection the action will target the current
 model instance only.
