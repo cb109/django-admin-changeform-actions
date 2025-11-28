@@ -24,6 +24,20 @@ def run_action_for_model_instance(request):
 
         admin.ChangeFormActionsMixin
 
+    POST Args:
+
+        app_label: str = The app label of the model.
+
+        model_name: str = The model name.
+
+        pk: int = The primary key of the model instance.
+
+        action: str = The action name to run.
+
+    Returns:
+
+        HttpResponseRedirect = Redirect back to the changeform page.
+
     """
     referer_url: str = request.META["HTTP_REFERER"]
 
