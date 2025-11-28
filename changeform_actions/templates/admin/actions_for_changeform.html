@@ -12,10 +12,10 @@
     <input type="hidden" name="model_name" value="{{ model_name }}">
     <input type="hidden" name="pk" value="{{ object_id }}">
 
-    <!-- Based on: https://github.com/django/django/blob/main/django/contrib/admin/templates/admin/actions.html -->
+    <!-- Based on: https://github.com/django/django/blob/5.2.7/django/contrib/admin/templates/admin/actions.html -->
     <div class="actions">
       <label>{{ action_form.action.label }} {{ action_form.action}}</label>
-      <button type="submit" class="button" name="index" value="{{ action_index|default:0 }}">{% translate "Run" %}</button>
+      <button type="submit" class="button" title="{% translate "Run the selected action" %}" name="index" value="{{ action_index|default:0 }}">{% translate "Go" %}</button>
     </div>
 
   </form>
