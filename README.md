@@ -53,6 +53,12 @@ This project uses [uv](https://docs.astral.sh/uv/) to handle python versions and
 uv sync
 ```
 
+To do a new release, bump the version in `pyproject.toml`, then:
+```bash
+uv build
+uv publish
+```
+
 ## Tests
 
 ```bash
