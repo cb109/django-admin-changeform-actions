@@ -24,7 +24,9 @@ Modify your Django project like:
 # settings.py
 
 INSTALLED_APPS = [
-  "changeform_actions",
+  "changeform_actions",  # Must be placed before Django's admin app!
+  ...
+  "django.contrib.admin",
 ]
 ```
 
