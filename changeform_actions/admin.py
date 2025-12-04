@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Tuple
 
 from django.template.context import ContextDict
 from django.template.loader import render_to_string
@@ -71,12 +71,18 @@ class ChangeFormActionsMixin:
         if not object_id:
             return ""
 
-        action_form = ActionForm(auto_id=None)
-        action_form.fields["action"].choices = [
+        action_choices: Tuple[str, str] = [
             (name, label)
             for (name, label) in self.get_action_choices(request)
             if self.skip_default_delete_action and name != DEFAULT_DELETE_ACTION_NAME
         ]
+        if len(action_choices) == 1:
+            # Only the default '----' option, so no actual actions
+            # available. No need to render the form.
+            return ""
+
+        action_form = ActionForm(auto_id=None)
+        action_form.fields["action"].choices = action_choices
 
         return render_to_string(
             "admin/actions_for_changeform.html",
