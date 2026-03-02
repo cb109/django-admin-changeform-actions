@@ -1,5 +1,6 @@
 from typing import Optional, Tuple
 
+from django.conf import settings
 from django.template.context import ContextDict
 from django.template.loader import render_to_string
 from django.urls import reverse
@@ -83,6 +84,13 @@ class ChangeFormActionsMixin:
 
         action_form = ActionForm(auto_id=None)
         action_form.fields["action"].choices = action_choices
+
+        if getattr(settings, "CHANGEFORM_ACTIONS_REMEMBER_LAST_ACTION", False):
+            last_action: Optional[str] = request.session.get(
+                "changeform_actions_last_action", None
+            )
+            if last_action and last_action in dict(action_choices):
+                action_form.initial["action"] = last_action
 
         return render_to_string(
             "admin/actions_for_changeform.html",

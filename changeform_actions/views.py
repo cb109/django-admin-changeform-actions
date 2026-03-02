@@ -1,4 +1,5 @@
 from django.apps import apps
+from django.conf import settings
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import QuerySet
@@ -57,6 +58,14 @@ def run_action_for_model_instance(request):
     for action, name, label in model_admin._get_base_actions():
         if name == action_name:
             action(model_admin, request, queryset)
-            model_admin.message_user(request, _("Action:") + f" {label}")
+
+            if getattr(settings, "CHANGEFORM_ACTIONS_ENABLE_DEFAULT_MESSAGE", True):
+                model_admin.message_user(request, _("Action:") + f" {label}")
+
+            if (
+                getattr(settings, "CHANGEFORM_ACTIONS_REMEMBER_LAST_ACTION", False)
+                and request.session
+            ):
+                request.session["changeform_actions_last_action"] = action_name
 
     return HttpResponseRedirect(referer_url)

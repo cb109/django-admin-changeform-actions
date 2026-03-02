@@ -52,6 +52,19 @@ class MyModelAdmin(ChangeFormActionsMixin, admin.ModelAdmin):
     actions = [...]
 ```
 
+## Django Settings
+
+```py
+# Whether to display an `Action: <name>` success message after running
+# an action. Disable this if you want to display no message or a custom
+# message, e.g. as part of each action.
+CHANGEFORM_ACTIONS_ENABLE_DEFAULT_MESSAGE: bool = True
+
+# Enable this to preselect the last action in the dropdown, which is
+# helpful to repeatedly run the same action several times.
+CHANGEFORM_ACTIONS_REMEMBER_LAST_ACTION: bool = False
+```
+
 ## Development Setup
 
 This project uses [uv](https://docs.astral.sh/uv/) to handle python versions and dependencies.
