@@ -13,7 +13,7 @@ instance's `changeform` page.
 Instead of targetting a selection the action will target the current
 model instance only.
 
-Note: Once [#12090](https://code.djangoproject.com/ticket/12090) makes its way into Django admin, this package will hopefully become obsolete!
+Note: Once [#12090](https://code.djangoproject.com/ticket/12090) makes its way into Django admin (with 6.1, expected in August 2026), this package will hopefully become obsolete!
 
 ## Installation
 
